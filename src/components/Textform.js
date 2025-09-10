@@ -7,20 +7,24 @@ export default function Textform(props) {
     console.log("uppercase was clicked " + text)
     let newText = text.toUpperCase()
     setText(newText)
+      props.showAlert("Converted to uppercase" , "success")
   }
   const handleLoClick = ()=>{
     console.log("uppercase was clicked " + text)
     let newText = text.toLowerCase()
     setText(newText)
+      props.showAlert("Converted to lowercase" , "success")
   }
   const handleOnChange=(event)=>{
     console.log("text was  changed")
     setText(event.target.value)
+    
   }
   const handleClearClick = ()=>{
     console.log("text was cleared");
     let newText = ("");
     setText(newText)
+    props.showAlert("Text cleared" , "success")
   }
   const handleCapitalizeClick = ()=>{
    const newText = text.split(" ")
@@ -28,16 +32,19 @@ export default function Textform(props) {
    .join(" ")
   
    setText(newText)
+    props.showAlert("Text Capitalized" , "success")
   }
   const handleCopyClick = ()=>{
     let text = document.getElementById("myBox");
     text.select()
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Copied to clipboard" , "success")
 
   }
    const handleExtraClick = ()=>{
     let newText = text.split(/[  ]+/)
     setText(newText.join(" "))
+    props.showAlert("Extra spaces removed" , "success")
 
   }
   
